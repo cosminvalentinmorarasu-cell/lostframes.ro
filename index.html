@@ -63,12 +63,10 @@
       color: #121212;
     }
 
-    /* 🌿 Frunze căzătoare continue */
+    /* 🌿 Frunze căzătoare multiple */
     .leaf {
       position: absolute;
       top: -100px;
-      width: 80px;
-      height: 80px;
       background-image: url('frunza.png');
       background-size: contain;
       background-repeat: no-repeat;
@@ -77,26 +75,18 @@
     }
 
     @keyframes fallAndSway {
-      0% {
-        transform: translateY(-100px) translateX(0px) rotate(0deg);
-        opacity: 0.8;
-      }
-      80% {
-        transform: translateY(calc(100vh - 80px)) translateX(0px) rotate(360deg);
-        opacity: 0.8;
-      }
-      100% {
-        transform: translateY(calc(100vh - 80px)) translateX(15px) rotate(360deg);
-        opacity: 0.8;
-      }
+      0% { transform: translateY(-100px) translateX(0) rotate(0deg); opacity: 0.8; }
+      80% { transform: translateY(calc(100vh - var(--size))) translateX(0) rotate(360deg); opacity: 0.8; }
+      100% { transform: translateY(calc(100vh - var(--size))) translateX(var(--sway)) rotate(360deg); opacity: 0.8; }
     }
 
-    /* Poziții diferite și timpi diferiți pentru cădere continuă */
-    .leaf:nth-child(4) { left: 10%; animation-duration: 10s; animation-delay: 0s; }
-    .leaf:nth-child(5) { left: 35%; animation-duration: 12s; animation-delay: 2s; }
-    .leaf:nth-child(6) { left: 60%; animation-duration: 14s; animation-delay: 1s; }
-    .leaf:nth-child(7) { left: 80%; animation-duration: 11s; animation-delay: 3s; }
-
+    /* Diferite dimensiuni, poziții și balans pentru naturalitate */
+    .leaf:nth-child(4) { left: 5%;  width: 70px; height: 70px; --size:70px; --sway:15px; animation-duration: 10s; animation-delay: 0s; }
+    .leaf:nth-child(5) { left: 25%; width: 85px; height: 85px; --size:85px; --sway:20px; animation-duration: 12s; animation-delay: 2s; }
+    .leaf:nth-child(6) { left: 40%; width: 75px; height: 75px; --size:75px; --sway:10px; animation-duration: 11s; animation-delay: 1s; }
+    .leaf:nth-child(7) { left: 60%; width: 90px; height: 90px; --size:90px; --sway:18px; animation-duration: 14s; animation-delay: 3s; }
+    .leaf:nth-child(8) { left: 75%; width: 80px; height: 80px; --size:80px; --sway:12px; animation-duration: 13s; animation-delay: 2.5s; }
+    .leaf:nth-child(9) { left: 85%; width: 70px; height: 70px; --size:70px; --sway:14px; animation-duration: 15s; animation-delay: 1.5s; }
   </style>
 </head>
 <body>
@@ -108,6 +98,8 @@
   </a>
 
   <!-- 🌿 Frunze căzătoare -->
+  <div class="leaf"></div>
+  <div class="leaf"></div>
   <div class="leaf"></div>
   <div class="leaf"></div>
   <div class="leaf"></div>
