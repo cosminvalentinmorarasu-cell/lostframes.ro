@@ -63,7 +63,7 @@
       color: #121212;
     }
 
-    /* 🌿 Frunze căzătoare + balans lateral */
+    /* 🌿 Frunze căzătoare continue */
     .leaf {
       position: absolute;
       top: -100px;
@@ -73,7 +73,7 @@
       background-size: contain;
       background-repeat: no-repeat;
       opacity: 0.8;
-      animation: fallAndSway linear forwards;
+      animation: fallAndSway linear infinite;
     }
 
     @keyframes fallAndSway {
@@ -91,11 +91,12 @@
       }
     }
 
-    /* Poziții și viteze diferite */
+    /* Poziții diferite și timpi diferiți pentru cădere continuă */
     .leaf:nth-child(4) { left: 10%; animation-duration: 10s; animation-delay: 0s; }
     .leaf:nth-child(5) { left: 35%; animation-duration: 12s; animation-delay: 2s; }
     .leaf:nth-child(6) { left: 60%; animation-duration: 14s; animation-delay: 1s; }
     .leaf:nth-child(7) { left: 80%; animation-duration: 11s; animation-delay: 3s; }
+
   </style>
 </head>
 <body>
