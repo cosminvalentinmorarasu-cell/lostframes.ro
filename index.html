@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LostFrames</title>
 
   <!-- Font Caviar Dreams -->
@@ -12,119 +12,104 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    :root{
-      --bg: #121212;
-      --fg: #f5f5f5;
-    }
-
-    * { box-sizing: border-box; }
-
     body {
       margin: 0;
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       font-family: 'Caviar Dreams', sans-serif;
-      background-color: var(--bg);
-      color: var(--fg);
+      background-color: #121212; /* negru elegant */
+      color: #f5f5f5;
       text-align: center;
       overflow: hidden;
       position: relative;
     }
 
-    /* Container central pentru text, pentru a-i seta stacking context */
-    .hero {
-      position: relative;
-      z-index: 2; /* peste fundal, dar sub frunze dacă vrem; vom controla */
-      pointer-events: none; /* frunzele nu vor interfera cu clickurile */
+    h1 {
+      font-size: 4rem;
+      letter-spacing: 5px;
+      margin: 0;
     }
 
-    h1 {
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      letter-spacing: 6px;
-      margin: 0;
-      line-height: 1;
+    /* Pulse animation */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
     }
 
     .camera-icon {
-      font-size: clamp(2rem, 5vw, 3rem);
-      color: var(--fg);
+      font-size: 3rem;
+      color: #f5f5f5;
       margin-top: 20px;
-      animation: pulse 1.6s infinite;
-      pointer-events: none;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.16); }
-      100% { transform: scale(1); }
+      animation: pulse 1.5s infinite;
     }
 
     .instagram-link {
       position: absolute;
-      bottom: 32px;
-      color: var(--fg);
+      bottom: 40px;
+      color: #f5f5f5;
       text-decoration: none;
-      font-size: 1.05rem;
-      border: 1px solid var(--fg);
-      padding: 10px 24px;
-      border-radius: 28px;
-      transition: all 0.28s ease;
-      z-index: 3;
-      pointer-events: auto;
+      font-size: 1.2rem;
+      border: 1px solid #f5f5f5;
+      padding: 10px 25px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
     }
 
     .instagram-link:hover {
-      background-color: var(--fg);
-      color: var(--bg);
+      background-color: #f5f5f5;
+      color: #121212;
     }
 
-    /* --------- FRUNZE (falling) ---------- */
-    /* wrapper pentru frunze - deasupra textului (z-index mare) */
-    .leaves {
-      position: absolute;
-      inset: 0; /* ocupa tot ecranul */
-      pointer-events: none; /* nu blochează clickurile */
-      z-index: 5; /* peste tot */
-      overflow: visible;
-    }
-
+    /* 🌿 Frunze căzătoare */
     .leaf {
       position: absolute;
-      top: -140px; /* pornesc de sus */
-      width: 80px;   /* dimensiune mai mare, minimalist */
-      height: 80px;
-      background-image: url('frunza.png');
+      top: -50px;
+      width: 40px;
+      height: 40px;
+      background-image: url('frunza.png'); /* imaginea ta ruginie */
       background-size: contain;
       background-repeat: no-repeat;
-      opacity: 0.92;
-      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.45)) saturate(0.9);
-      transform-origin: center;
-      /* animația e aplicată individual prin clase */
+      opacity: 0.8;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
     }
 
-    /* animație generală: cadere ușoară + deriva stânga/dreapta + rotație */
     @keyframes fall {
       0% {
-        transform: translateY(-120px) translateX(0) rotate(-10deg) scale(1);
-        opacity: 0.0;
-      }
-      10% {
-        opacity: 0.6;
-      }
-      50% {
-        transform: translateY(35vh) translateX(var(--drift)) rotate(var(--rot-mid)) scale(var(--scale-mid));
-        opacity: 0.9;
-      }
-      90% {
-        opacity: 0.75;
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0.8;
       }
       100% {
-        transform: translateY(75vh) translateX(calc(var(--drift) * -1)) rotate(var(--rot-end)) scale(var(--scale-end));
-        opacity: 0.6;
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.8;
       }
     }
 
-    /* setări individuale - variem left, durata, întârzierea, di*
+    /* Poziții și viteze diferite pentru frunze */
+    .leaf:nth-child(4) { left: 10%; animation-duration: 10s; animation-delay: 0s; }
+    .leaf:nth-child(5) { left: 35%; animation-duration: 12s; animation-delay: 2s; }
+    .leaf:nth-child(6) { left: 60%; animation-duration: 14s; animation-delay: 1s; }
+    .leaf:nth-child(7) { left: 80%; animation-duration: 11s; animation-delay: 3s; }
+
+  </style>
+</head>
+<body>
+  <h1>COMING SOON</h1>
+  <i class="fas fa-camera camera-icon"></i>
+
+  <a href="https://www.instagram.com/lostframes.eu" target="_blank" class="instagram-link">
+    Follow the frames on Instagram
+  </a>
+
+  <!-- 🌿 Frunze căzătoare -->
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+</body>
+</html>
